@@ -36,8 +36,4 @@ public class Employee {
             throw new IllegalArgumentException("Hours cannot be 0 or less");
         this.hourlyRate = hourlyRate;
     }
-
-    private int getHourlyRate(){
-        return hourlyRate;
-    }
 }
