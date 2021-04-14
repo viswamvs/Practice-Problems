@@ -6,11 +6,14 @@ public class Employee {
 
     private static int numberOfEmployees;
 
+    //constructor1
     public Employee(int baseSalary, int hourlyRate){
         setBaseSalary(baseSalary);
         setHourlyRate(hourlyRate);
         numberOfEmployees++;
     }
+
+    //constructor2
     public Employee(int baseSalary){
         this(baseSalary,0);
     }
@@ -24,6 +27,7 @@ public class Employee {
         this.baseSalary = baseSalary;
     }
 
+    //method to calculate wage of an employee
     public int calculateWage(int extraHours){
         return baseSalary + (hourlyRate * extraHours);
     }
