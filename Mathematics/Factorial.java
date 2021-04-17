@@ -10,6 +10,7 @@ public class Factorial {
         return fact;
     }
 
+    //recursion method
     public int factorialRecursive(int n){
         if(n<=1)
             return 1;
