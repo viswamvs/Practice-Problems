@@ -11,12 +11,14 @@ public class NumberOfDigits {
         return count;
     }
 
+    //recursion method
     public int countDigitRecursive(int n){
         if(n==0)
             return 0;
         return 1 + countDigitRecursive(n/10);
     }
 
+    //efficient method
     public int countDigitLog(int n){
         return (int) Math.floor(Math.log10(n) + 1);
     }
