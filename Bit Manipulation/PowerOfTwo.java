@@ -23,4 +23,10 @@ public class PowerOfTwo {
             return false;
         return ((n & (n-1)) == 0);
     }
+
+    //one line solution
+    public boolean powOf2(int n)
+    {
+        return ((n != 0) && ((n & (n-1)) == 0));
+    }
 }
