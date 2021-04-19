@@ -17,4 +17,13 @@ public class KthSet {
         else
             System.out.println("NOT SET");
     }
+
+    //indexing from 0
+    public boolean Kthbit(int n, int k)
+    {
+        if ((n & (1 << k)) != 0)
+            return true;
+        else
+            return false;
+    }
 }
