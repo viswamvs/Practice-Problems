@@ -18,10 +18,8 @@ public class ExactlyThreeDivisors {
     }
     public int exactly3Divisors(int N)
     {
-        int count = 1;
-        if (N <= 3)
-            return 0;
-        for(int i = 3; i <= Math.sqrt(N); i++ )
+        int count = 0;
+        for(int i = 2; i * i <= N; i++ )
         {
             if(isPrime(i) && (i * i) <= N)
             {
