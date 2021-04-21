@@ -25,4 +25,10 @@ public class SumOfNatural {
         }
         return sum;
     }
+
+    //more efficient method
+    public int sumMoreEff(int n)
+    {
+        return n * ((n + 1) / 2);
+    }
 }
