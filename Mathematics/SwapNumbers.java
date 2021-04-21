@@ -11,4 +11,13 @@ public class SwapNumbers {
         b = t;
         System.out.print(a + " " + b);
     }
+
+    //efficient solution
+    public void swapNum(int a, int b)
+    {
+        a = a + b;
+        b = a - b;
+        a = a - b;
+        System.out.print(a + " " + b);
+    }
 }
