@@ -12,4 +12,18 @@ public class SampleArray {
         }
         return -1;
     }
+
+    //insert operation
+    int insert(int arr[], int n, int cap, int pos, int x)
+    {
+        if (n == cap)
+            return n;
+        int idx = pos - 1;
+        for(int i = n-1;i>=1;i--)
+        {
+            arr[i+1] = arr[i];
+        }
+        arr[idx] = x;
+        return (n+1);
+    }
 }
