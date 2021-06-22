@@ -1,32 +1,22 @@
-package com.company;
-
-public class PowerOfTwo {
-
-    //naive solution
-    public boolean pow(int n)
+public class PowerOfTwo{
+    //naive approach
+    public static boolean powOf2(int n)
     {
-        if(n == 0)
-            return false;
-        while (n != 1)
+        while(n != 1)
         {
-            if (n % 2 != 0)
+            if((n & 1) == 1)
                 return false;
-            n = n / 2;
+            n = n >> 1;
         }
         return true;
     }
-
-    //efficient solution
-    public boolean powOfTwo(int n)
-    {
-        if (n == 0)
-            return false;
-        return ((n & (n-1)) == 0);
-    }
-
-    //one line solution
-    public boolean powOf2(int n)
+    
+    //efficient approach
+    public static boolean isPow(int n)
     {
         return ((n != 0) && ((n & (n-1)) == 0));
+    }
+    public static void main(String[] args){
+        System.out.println(isPow(16));
     }
 }
