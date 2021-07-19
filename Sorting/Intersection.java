@@ -23,11 +23,31 @@ class GFG {
     //efficient solution
     public static void intersection1(int a[], int b[])
     {
-        
+        int m = a.length;
+        int n = b.length;
+        int i=0,j=0;
+        while(i<m && j<n)
+        {
+            if(i>0 && a[i] == a[i-1])
+            {
+                i++;
+                continue;
+            }
+            if(a[i] < b[j])
+                i++;
+            else if(a[i] > b[j])
+                j++;
+            else
+            {
+                System.out.print(a[i] + " ");
+                i++;
+                j++;
+            }
+        }
     }
 	public static void main (String[] args) {
-		int[] a = {1,1,3,3,3,5};
-		int[] b = {1,1,1,1,3,5,7};
-		intersection(a,b);
+		int[] a = {3,5,10,10,10,15,15,20};
+		int[] b = {5,10,10,15,30};
+		intersection1(a,b);
 	}
 }
