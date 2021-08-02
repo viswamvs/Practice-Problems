@@ -4,7 +4,7 @@ import java.io.*;
 
 class GFG {
     
-    static int kadane(int[] arr)
+    public static int kadane(int[] arr)
     {
         int n = arr.length;
         int res = arr[0], sum = arr[0];
@@ -16,7 +16,7 @@ class GFG {
         return res;
     }
 	public static void main (String[] args) {
-		int[] a = {-1,-2,-3,-4};
+		int[] a = {1,2,3,-2,5};
 		System.out.println(kadane(a));
 	}
 }
