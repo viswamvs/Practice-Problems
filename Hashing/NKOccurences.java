@@ -1,84 +1,106 @@
 /*package whatever //do not write package name here */
-//More than n/k Occurences
 
 import java.io.*;
 import java.util.*;
 
 class GFG {
     
-    //naive solution
-    public static void nkOccurences(int[] arr, int k)
+    
+    //time : O(n^2) space : O(n)
+    static void nk(int a[], int k)
     {
-        int n = arr.length;
-        Arrays.sort(arr);
-        int i=1, count=1;
+        int n = a.length;
+        HashSet<Integer> h = new HashSet<>();
+        for(int i=0;i<n;i++)
+        {
+            int count=0;
+            for(int j=0;j<n;j++)
+            {
+                if(a[i] == a[j])
+                    count++;
+                if(count > n/k)
+                    h.add(a[j]);
+            }
+        }
+        System.out.println(h);
+    }
+    
+    
+    //time : O(nlogn) space : O(1)
+    static void nkO(int[] a, int k)
+    {
+        int n = a.length;
+        Arrays.sort(a);
+        int i=1, freq = 1;
         while(i<n)
         {
-            while(i<n && arr[i] == arr[i-1])
+            while(i<n && a[i] == a[i-1])
             {
-                count++;
+                freq++;
                 i++;
             }
-            if(count > n/k)
-                System.out.print(arr[i-1] + " ");
-            count = 1;
+            if(freq > n/k)
+                System.out.print(a[i-1]  + " ");
             i++;
+            freq = 1;
         }
     }
     
-    //efficient solution
-    public static void nOccurences(int[] arr, int k)
+    
+    //time : O(n) space : O(n)
+    static void countNK(int[] arr, int k)
     {
+        HashMap<Integer,Integer> h = new HashMap<>();
         int n = arr.length;
-        HashMap<Integer,Integer> m=new HashMap<Integer,Integer>();
-        
         for(int x:arr)
-            m.put(x,m.getOrDefault(x,0)+1);
-        for(Map.Entry <Integer,Integer> e:m.entrySet())
-            if(e.getValue()>n/k)
-                System.out.print(e.getKey()+" ");
+        {
+                h.put(x, h.getOrDefault(x, 0) + 1);
+        }
+        for(Map.Entry<Integer,Integer> e : h.entrySet())
+        {
+            if((Integer)e.getValue() > n/k)
+                System.out.print((Integer)e.getKey() + " ");
+        }
     }
     
-    //more efficient solution
-    public static void nk(int arr[], int k)
+    //time : O(nk) space : O(k)
+    static void countNKOcc(int[] a, int k)
     {
-        HashMap<Integer,Integer> m = new HashMap<Integer,Integer>();
-        int n = arr.length;
-        for(int i=0;i<n;i++)
+        HashMap<Integer,Integer> h = new HashMap<>();
+        int n = a.length;
+        for(int x : a)
         {
-            if(m.containsKey(arr[i]))
-            {
-                int count = m.get(arr[i]);
-                m.put(arr[i], count + 1);
-            }
-            else if(m.size() < k-1)
-                m.put(arr[i], 1);
+            if(h.containsKey(x))
+                h.put(x, h.get(x) + 1);
+            if(h.size() < k-1)
+                h.put(x, 1);
             else
             {
-                for(Map.Entry e : m.entrySet())
+                for(Map.Entry<Integer,Integer> e : h.entrySet())
                 {
-                    Integer c = (Integer) e.getValue();
-                    m.put((Integer) e.getKey(), c-1);
-                    if((Integer) e.getValue() == 0)
-                        m.remove(e.getKey());
+                    if((Integer)e.getValue() == 0)
+                        h.remove(x);
+                    h.put(e.getKey(), e.getValue() - 1);
                 }
             }
         }
-        for(Map.Entry x : m.entrySet())
+        
+        for(Map.Entry<Integer,Integer> e : h.entrySet())
         {
             int count = 0;
-            for(int i=0;i<n;i++)
+            for(int i=0;i<a.length;i++)
             {
-                if((Integer)x.getKey() == arr[i])
+                if((Integer)e.getKey() == a[i])
                     count++;
             }
             if(count > n/k)
-                System.out.print(x.getKey() + " ");
+                System.out.print((Integer)e.getKey() + " ");
         }
+        
     }
     
 	public static void main (String[] args) {
-		int[] a = {10,10,20,30,20,10,10};
-		nk(a,3);
+	    int[] a = {30,10,20,20,10,20,30,30};
+	    countNKOcc(a,4);
 	}
 }
