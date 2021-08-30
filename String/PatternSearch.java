@@ -1,9 +1,10 @@
-/*package whatever //do not write package name here */
+
 
 import java.io.*;
 
 class GFG {
     
+    //naive pattern search
     static void patternSearching(String txt, String pat)
     {
         int n = txt.length();
