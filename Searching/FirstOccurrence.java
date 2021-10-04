@@ -17,7 +17,7 @@ public class FirstOccurrence{
                 if(mid == 0 || arr[mid] != arr[mid-1])
                     return mid;
                 else 
-                    high = mid + 1;
+                    high = mid - 1;
             }
         }
         return 0;
