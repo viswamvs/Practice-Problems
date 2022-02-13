@@ -51,7 +51,7 @@ class GFG {
                 swap(a[i],a[j]);
             }
         }
-        swap(a[i+1], a[high-1]);
+        swap(a[i+1], a[high]);
         return (i+1);
     }
     
